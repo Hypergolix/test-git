@@ -1,0 +1,82 @@
+
+<html>
+<link rel="icon" 
+      type="image/png" 
+      href="iconfinder_001_-_play_2949747.png">
+
+<head>
+<style>
+
+h1
+{
+   font-family: verdana;
+   font-size: 30px;
+   color: black;
+   text-align: center;
+}
+.p1
+{
+   font-family: verdana;
+   font-size: 15px;
+   color: black;
+   text-align: center;
+}
+
+img
+{
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;  
+}
+
+body {background-color: pink;}
+
+</style>
+</head>
+<title>Shibe</title>
+
+
+<body>
+
+<h1> This site show random pictures of shibe dogs</h1>
+
+<p class="p1">The function will GET pictures online</p>
+
+<br>
+<p id="shibe">Click for shibe</p>
+
+<script>
+
+document.getElementById("shibe").onclick = function() {cacheImagesFromAPI()};
+
+const BASEURL = `https://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true`;
+
+async function fetchData(url) {
+var uri = "https://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true";
+var enc = encodeURIComponent(uri);
+var dec = decodeURIComponent(enc);
+var data;
+
+const response = await fetch(url);
+return response.json();
+
+};
+
+function cacheImagesFromAPI() {
+    const promise = fetchData(BASEURL); 
+    promise.then((response) => {
+        images = response.map(image => image);
+    });
+
+};
+</script>
+
+
+
+
+
+
+</body>
+</html>
+
