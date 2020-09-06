@@ -1,10 +1,11 @@
 document.getElementById("shibe").onclick = function () { cacheImagesFromAPI() };
 let images = [];
 var numberOf = 5;
+var corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
 
 async function fetchData(url) {
 
-    const response = await fetch(url);
+    const response = await fetch(corsAnywhere + url);
     return response.json();
 
 };
